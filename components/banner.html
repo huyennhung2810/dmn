@@ -1,0 +1,243 @@
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Arial", sans-serif;
+  }
+
+  .banner-slideshow {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    background-color: #0052cc;
+  }
+
+  .slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+  }
+
+  .slide.active {
+    opacity: 1;
+  }
+
+  .slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 82, 204, 0.35);
+    z-index: 1;
+  }
+
+  .slide-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px 12px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
+
+  .slide-nav:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .slide-nav.prev {
+    left: 20px;
+  }
+
+  .slide-nav.next {
+    right: 20px;
+  }
+
+  .slide-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .dot.active {
+    background: #fff;
+    transform: scale(1.3);
+  }
+
+  .dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  @media (max-width: 768px) {
+    .banner-slideshow {
+      height: 350px;
+    }
+
+    .slide-nav {
+      padding: 12px 10px;
+      font-size: 20px;
+    }
+
+    .slide-nav.prev {
+      left: 10px;
+    }
+
+    .slide-nav.next {
+      right: 10px;
+    }
+
+    .slide-dots {
+      bottom: 15px;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .banner-slideshow {
+      height: 250px;
+    }
+
+    .slide-nav {
+      padding: 10px 8px;
+      font-size: 18px;
+    }
+
+    .slide-dots {
+      bottom: 10px;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+    }
+  }
+</style>
+
+<div class="banner-slideshow">
+  <div class="slides" id="slides">
+    <div
+      class="slide active"
+      style="background-image: url(&quot;/assets/img/banner1.webp&quot;)"
+    ></div>
+    <div
+      class="slide"
+      style="background-image: url(&quot;/assets/img/banner2.webp&quot;)"
+    ></div>
+    <div
+      class="slide"
+      style="background-image: url(&quot;/assets/img/banner3.webp&quot;)"
+    ></div>
+    <div
+      class="slide"
+      style="background-image: url(&quot;/assets/img/banner4.webp&quot;)"
+    ></div>
+  </div>
+
+  <button class="slide-nav prev" id="prevBtn">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <button class="slide-nav next" id="nextBtn">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+
+  <div class="slide-dots" id="dots"></div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll(".slide");
+  const dotsContainer = document.getElementById("dots");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  let currentSlide = 0;
+  let autoplayInterval;
+
+  slides.forEach((_, index) => {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    if (index === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll(".dot");
+
+  function showSlide(index) {
+    slides.forEach((slide) => slide.classList.remove("active"));
+    dots.forEach((dot) => dot.classList.remove("active"));
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+    resetAutoplay();
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+    resetAutoplay();
+  }
+
+  function goToSlide(index) {
+    currentSlide = index;
+    showSlide(currentSlide);
+    resetAutoplay();
+  }
+
+  function startAutoplay() {
+    autoplayInterval = setInterval(nextSlide, 4000);
+  }
+
+  function resetAutoplay() {
+    clearInterval(autoplayInterval);
+    startAutoplay();
+  }
+
+  prevBtn.addEventListener("click", prevSlide);
+  nextBtn.addEventListener("click", nextSlide);
+  startAutoplay();
+</script>

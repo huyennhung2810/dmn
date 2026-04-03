@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Footer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      /* ===== Footer ===== */
+      .footer {
+        background: url("/assets/img/background.jpg") no-repeat center/cover; /* nền ảnh */
+        color: #fff;
+        padding: 60px 20px 30px;
+        position: relative;
+        overflow: hidden;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: auto;
+        gap: 20px;
+      }
+
+      .footer-column {
+        flex: 1;
+        min-width: 220px;
+        background: rgba(0, 0, 0, 0.6); /* background mờ */
+        padding: 20px;
+        border-radius: 8px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+
+      .footer-column.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .footer-column h3 {
+        margin-bottom: 10px;
+        font-weight: bold;
+        border-bottom: 2px solid #0052cc;
+        display: inline-block;
+        padding-bottom: 5px;
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 5px;
+        margin: 5px;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 15px;
+        line-height: 1.3;
+        font-size: 15px;
+      }
+
+      .footer-column a {
+        color: #fff;
+        text-decoration: none;
+        transition:
+          color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .footer-column a:hover {
+        color: #ffc107;
+        transform: scale(1.05);
+      }
+
+      /* Icon mạng xã hội */
+      .footer-column .social-icons {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .footer-column .social-icons a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        transition: all 0.3s ease;
+      }
+
+      .footer-column .social-icons a:hover {
+        background: #ffc107;
+        color: #000;
+        transform: scale(1.1);
+      }
+
+      /* Footer bottom */
+      .footer-bottom {
+        text-align: center;
+        padding: 20px;
+        background-color: #0052cc;
+        font-size: 17px;
+        color: #fff;
+      }
+
+      .back-to-top {
+        margin-left: 10px;
+        font-weight: bold;
+        color: #060603;
+        padding: 5px 10px;
+        border: 1px solid #070706;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .back-to-top:hover {
+        color: #000;
+        background-color: #c4f923;
+        transform: translateY(-3px);
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .footer-content {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .footer-column {
+          margin: 10px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="footer">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Đá mỹ nghệ Thu Huyền</h3>
+          <p>
+            Đá mỹ nghệ Thu Huyền chuyên cung cấp các sản phẩm đá mỹ nghệ chất
+            lượng cao, tinh xảo và đa dạng mẫu mã.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Thông tin liên hệ</h3>
+          <ul>
+            <li>
+              Địa chỉ:
+              <a
+                href="https://maps.app.goo.gl/TVHMr6Bzcr8t6mNL8"
+                target="_blank"
+                ><i class="fa-solid fa-location-dot"></i> Đá mỹ nghệ Thu
+                Huyền</a
+              >
+            </li>
+            <li>
+              Hotline:
+              <a href="tel:+84982683221"
+                ><i class="fa fa-phone" aria-hidden="true"></i> 0982.683.221</a
+              >
+              - <a href="tel:+84982683221">0333.151.510</a>
+            </li>
+            <li>
+              Email:
+              <a href="mailto:damynghehuyenthu@gmail.com"
+                ><i class="fa-solid fa-envelope"></i>
+                damynghehuyenthu@gmail.com</a
+              >
+            </li>
+            <li>
+              Zalo:
+              <a href="https://zalo.me/0982683221"
+                ><i class="fa-brands fa-zalo"></i> 0982.683.221</a
+              >
+            </li>
+            <li>
+              Website:
+              <a href="http://damynghehuyenthu.com"
+                ><i class="fa-solid fa-globe"></i> damynghehuyenthu.com</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Sản phẩm tiêu biểu</h3>
+          <ul>
+            <li><a href="#">Lăng mộ đá</a></li>
+            <li><a href="#">Cổng đá</a></li>
+            <li><a href="#">Mộ đá đẹp</a></li>
+            <li><a href="#">Lan can</a></li>
+            <li><a href="#">Nhà thờ họ</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Chính sách</h3>
+          <ul>
+            <li><a href="">Chính sách vận chuyển</a></li>
+            <li><a href="">Hướng dẫn mua hàng</a></li>
+            <li><a href="">Chính sách bảo hành</a></li>
+            <li><a href="">Chính sách đổi trả</a></li>
+            <li><a href="">Chính sách bảo mật</a></li>
+            <li><a href="">Chính sách thanh toán</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2024 Đá mỹ nghệ Thu Huyền.
+      <a href="#top" class="back-to-top">Lên đầu trang</a>
+    </div>
+
+    <script>
+      // ===== Fade-in khi cuộn trang =====
+      document.addEventListener("DOMContentLoaded", function () {
+        const columns = document.querySelectorAll(".footer-column");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+              }
+            });
+          },
+          { threshold: 0.2 },
+        );
+
+        columns.forEach((col) => observer.observe(col));
+      });
+
+      // ===== Scroll lên đầu trang =====
+      document
+        .querySelector(".back-to-top")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+  </body>
+</html>

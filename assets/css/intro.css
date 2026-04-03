@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 5px;
+}
+
+/* Nội dung chính */
+.wrapper {
+  width: 900px; /* cố định chiều rộng 900px */
+  background-color: #ffffff; /* nền trắng */
+  padding: 30px 40px; /* padding rộng để nội dung thoáng */
+  box-sizing: border-box;
+  color: #555; /* chữ màu tối cho nền sáng */
+  font-size: 16px;
+  line-height: 1.6;
+  border-radius: 6px; /* bo góc nhẹ */
+  box-shadow: 0 1px 3px rgba(0, 82, 163, 0.08); /* bóng nhẹ, nhẹ nhàng hơn trên nền sáng */
+  overflow-wrap: break-word; /* tránh tràn chữ */
+}
+
+/* Các kiểu chữ cho wrapper cũng nên điều chỉnh màu phù hợp nền trắng */
+.wrapper h1 {
+  font-size: 28px;
+  color: #1a202c; /* màu đen xám */
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.wrapper h2 {
+  font-size: 22px;
+  color: #0052cc; /* xanh dương đậm */
+  margin-top: 40px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #0052cc;
+  padding-bottom: 5px;
+}
+
+.wrapper p {
+  margin-bottom: 15px;
+  text-align: justify;
+  color: #444444; /* chữ dễ đọc trên nền trắng */
+}
+
+.wrapper ul,
+.wrapper ol {
+  margin: 15px 0 20px 20px;
+  padding-left: 15px;
+  color: #444444;
+}
+
+.wrapper li {
+  margin-bottom: 10px;
+}
+
+.wrapper strong {
+  font-weight: 600;
+  color: #0052cc; /* xanh dương đậm */
+}
+
+.wrapper em {
+  font-style: italic;
+  color: #666666;
+}
+
+.wrapper blockquote {
+  font-style: italic;
+  background: #f5f9ff;
+  padding: 15px 25px;
+  border-left: 4px solid #0052cc;
+  margin: 20px 0;
+  color: #555555;
+}
+
+/* Tổng thể sidebar */
+.sidebar {
+  width: 300px;
+  border: 1px solid #e0e7ff;
+  background-color: #ffffff;
+}
+
+/* Tiêu đề chính "Danh mục sản phẩm" */
+.category h3 {
+  background-color: #0052cc;
+  color: #fff;
+  padding: 12px;
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Danh sách sản phẩm */
+.product-table {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Nhóm chính (Main Category) - màu nền xanh dương nhẻ */
+.product-table .main-category {
+  background-color: #e8f0ff;
+  padding: 10px;
+  font-weight: bold;
+  color: #0052cc;
+  border-top: 1px solid #d0dfff;
+}
+
+/* Danh mục con (Sub Category) */
+.product-table .sub-category {
+  padding: 10px;
+  padding-left: 17px;
+  background-color: #f5f9ff;
+  border-top: 1px solid #e8f0ff;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Hover hiệu ứng */
+.product-table .sub-category:hover {
+  background-color: #e8f0ff;
+  color: #0052cc;
+  padding-left: 20px;
+}
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+  }
+}

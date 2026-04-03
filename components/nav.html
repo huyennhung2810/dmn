@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nav-bar</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+      }
+
+      .nav-main {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        border-bottom: 2px solid #0052cc;
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        align-items: center;
+      }
+
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+      }
+      .nav-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+      .menu.show {
+        display: flex;
+        flex-direction: column;
+        animation: slideDown 0.3s ease forwards;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* menu chính */
+      .menu {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+        gap: 0;
+      }
+      .menu li {
+        position: relative;
+        flex: 1;
+        text-align: left;
+      }
+      .menu li a {
+        text-decoration: none;
+        color: #0052cc;
+        padding: 8px 12px;
+        display: block;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+      }
+      .menu li a:hover {
+        background: #e8f0ff;
+        color: #0052cc;
+      }
+
+      /* Dropdown */
+      .menu li .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #ffffff;
+        list-style: none;
+        padding: 5px 0;
+        margin: 0;
+        width: 220px;
+        display: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 82, 204, 0.15);
+        z-index: 1000;
+      }
+
+      .menu li:hover > .dropdown {
+        display: block;
+      }
+
+      .menu li .dropdown li a {
+        color: #333;
+        padding: 10px 15px;
+        display: block;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+      }
+
+      .menu li .dropdown li a:hover {
+        background: #e8f0ff;
+        color: #0052cc;
+      }
+
+      @media (max-width: 992px) {
+        .nav-toggle {
+          display: flex;
+        }
+        .menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background-color: #f5f9ff;
+          flex-direction: column;
+          display: none;
+        }
+        .menu li {
+          width: 100%;
+        }
+        .menu li a {
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          padding: 12px 15px;
+        }
+        .menu li .dropdown {
+          position: relative;
+          top: 0;
+          left: 0;
+          width: 100%;
+          display: none;
+        }
+
+        .menu li:hover > .dropdown {
+          display: block;
+        }
+      }
+
+      /* Mũi tên cố định, luôn quay xuống, sát chữ */
+      .menu li.has-dropdown > a {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px; /* khoảng cách giữa chữ và mũi tên */
+      }
+
+      /* Tạo mũi tên bằng CSS */
+      .menu li.has-dropdown > a .arrow {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-right: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transform: rotate(45deg); /* quay xuống */
+        margin-left: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav-main">
+      <div class="nav-container">
+        <!-- Hamburger cho mobile -->
+        <div class="nav-toggle" id="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- Menu chính -->
+        <ul class="menu" id="menu">
+          <li><a href="/pages/home/home.html">Trang chủ</a></li>
+          <li><a href="/pages/section/gioiThieu.html">Giới thiệu</a></li>
+          <li class="has-dropdown">
+            <a href="">Mộ đá <span class="arrow"></span></a>
+            <ul class="dropdown">
+              <li><a href="">Mộ 1 mái</a></li>
+              <li><a href="">Mộ 2 mái</a></li>
+              <li><a href="">Mộ 3 mái</a></li>
+              <li><a href="">Mộ bành</a></li>
+              <li><a href="">Mộ tròn</a></li>
+              <li><a href="">Mộ công giáo</a></li>
+              <li><a href="">Mộ đôi - mộ liền</a></li>
+              <li><a href="">Mộ tam cấp</a></li>
+            </ul>
+          </li>
+
+          <li class="has-dropdown">
+            <a href="">Lăng mộ đá <span class="arrow"></span></a>
+            <ul class="dropdown">
+              <li><a href="">Lăng mộ đá xanh đen</a></li>
+              <li><a href="">Lăng mộ đá xanh rêu</a></li>
+              <li><a href="">Lăng cánh - lăng đơn</a></li>
+            </ul>
+          </li>
+
+          <li class="has-dropdown">
+            <a href="">Đồ thờ đá<span class="arrow"></span></a>
+            <ul class="dropdown">
+              <li><a href="">Bàn lễ đá</a></li>
+              <li><a href="">Lư hương</a></li>
+              <li><a href="">Cây hương đá</a></li>
+              <li><a href="">Bát hương, lọ hoa, mâm bồng</a></li>
+            </ul>
+          </li>
+
+          <li class="has-dropdown">
+            <a href="">Kiến trúc đá <span class="arrow"></span></a>
+            <ul class="dropdown">
+              <li><a href="">Lan can</a></li>
+              <li><a href="">Cuốn thư</a></li>
+              <li><a href="">Chậu cảnh</a></li>
+              <li><a href="">Cột đá</a></li>
+              <li><a href="">Cổng đá</a></li>
+              <li><a href="">Đèn đá</a></li>
+              <li><a href="">Bậc thềm</a></li>
+              <li><a href="">Đá lát nền</a></li>
+            </ul>
+          </li>
+
+          <li><a href="">Kiến thức</a></li>
+          <li><a href="/pages/section/lienHe.html">Liên hệ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      const navToggle = document.getElementById("nav-toggle");
+      const menu = document.getElementById("menu");
+      const dropdowns = document.querySelectorAll(".menu li.has-dropdown");
+
+      navToggle.addEventListener("click", () => {
+        menu.classList.toggle("show");
+      });
+
+      dropdowns.forEach((drop) => {
+        drop.addEventListener("click", (e) => {
+          if (window.innerWidth <= 992) {
+            e.preventDefault();
+            drop.classList.toggle("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
